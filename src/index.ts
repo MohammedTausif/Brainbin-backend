@@ -12,9 +12,13 @@ import { random } from "./utils";
 dotenv.config();
 const app = express()
 app.use(express.json())
-app.use(cors())
 
-
+const CorsOptions = {
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content", "Authorization"]
+}
+app.use(cors(CorsOptions));
 app.post("/api/v1/signup", async (req, res) => {
     //ZOD
     const username = req.body.username;
