@@ -30,6 +30,11 @@ const CorsOptions = {
     allowedHeaders: ["Content", "Authorization"]
 };
 app.use((0, cors_1.default)(CorsOptions));
+app.use("/", (req, res) => {
+    res.json({
+        message: "Hello from backend"
+    });
+});
 app.post("/api/v1/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     //ZOD
     const username = req.body.username;
