@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
 const { connectDB } = require('../model/connectDB');
 const userRoutes  = require('../routes/userRoutes');
 const contentRoutes = require('../routes/contentRoutes')
 const linkRoutes = require('../routes/linkRoutes')
 const cors = require('cors');
-const { METHODS } = require('http');
 require('dotenv').config();
 
 const app = express();
@@ -15,7 +15,7 @@ connectDB()
 const corsOptions= {
   origin: process.env.FE_URL,
   methods: ["POST", "GET", "PUT", "DELETE"],
-  // allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }
 
 app.use(cors(corsOptions))
